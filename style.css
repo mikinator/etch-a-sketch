@@ -1,0 +1,16 @@
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    width: 320px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px;
+}
+
+.gridCell {
+    width: 19px;
+    height: 19px;
+    background-color: red;
+}
