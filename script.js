@@ -7,6 +7,10 @@ let gridSize = (containerSize/gridNo) - 1;
 
 button.addEventListener("click", () => {
     gridNo = parseInt(prompt("Set grid size "));
+    if (isNaN(gridNo) || gridNo < 1 || gridNo > 100) {
+        alert("Please enter a number between 1 and 100");
+        return;
+    }
     gridSize = (containerSize/gridNo) - 1;
     deleteGrid();
     createGrid();
@@ -19,17 +23,14 @@ function createGrid() {
         gridCell.style.height = `${gridSize}px`;
         gridCell.classList.add("gridCell");
         gridCell.addEventListener("mouseenter", () => {
-            gridCell.style.backgroundColor = "blue";
-        })
-        gridCell.addEventListener("mouseleave", () => {
-            gridCell.style.backgroundColor = "red";
+            gridCell.style.backgroundColor = `rgb(${Math.floor(Math.random() * (255 - 0 + 1)) + 0}, ${Math.floor(Math.random() * (255 - 0 + 1)) + 0}, ${Math.floor(Math.random() * (255 - 0 + 1)) + 0})`;
         })
         container.appendChild(gridCell);
     }
 }
 
 function deleteGrid() {
-    currentGrid = document.querySelectorAll(".gridCell");
+    let currentGrid = document.querySelectorAll(".gridCell");
     currentGrid.forEach(element => {
         element.remove()
     });
